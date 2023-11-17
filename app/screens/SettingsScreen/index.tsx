@@ -1,12 +1,9 @@
 import {View, Text, SafeAreaView} from 'react-native';
 import globalStyles from '../../constants/globalStyles';
-import IconicItemWithSwitch from '../../components/IconicItemWithSwitch';
 import IconicItemWithText from '../../components/IconicItemWithText';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
 import {useTheme} from '@react-navigation/native';
-import {globalStore} from '../../store/store';
 import {DarkMode, LightMode} from '../../constants/colors';
 import { ThemeItem, useThemes } from '../../handlers/ThemeContext';
 import { LanguageItem, useLanguage } from '../../handlers/LanguageContext';

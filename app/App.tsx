@@ -47,7 +47,7 @@ const AppRoot = () => {
     // get and set user selected theme in store
     async function setSelectedTheme() {
       const selectedTheme = await getValueFromAsyncStorage('selected_theme');
-      onSetTheme(selectedTheme)
+      onSetTheme(selectedTheme ? selectedTheme : 'light');
     }
     // get and set user selected language in store
     async function setSelectedLanguage() {
@@ -55,8 +55,8 @@ const AppRoot = () => {
         'selected_language',
       );
       
-      i18n.changeLanguage(selectedLanguage);
-      onSetLanguages(selectedLanguage);
+      i18n.changeLanguage(selectedLanguage );
+      onSetLanguages(selectedLanguage ? selectedLanguage : 'en');
     }
     setSelectedTheme();
     setSelectedLanguage();

@@ -1,11 +1,11 @@
 import {SafeAreaView, View, FlatList} from "react-native"
 import globalStyles from "../../constants/globalStyles"
-import ItemWithIcon from "../../components/ItemWithIcon"
 import {useTranslation} from "react-i18next"
 import {setValueInAsyncStorage} from "../../utils/asyncStorage"
 import {useTheme} from "@react-navigation/native"
 import {DarkMode, LightMode} from "../../constants/colors"
 import { LanguageItem, useLanguage } from "../../handlers/LanguageContext"
+import ItemWithIcon from "../../components/ItemWithIcon"
 
 const LanguagesScreen = ({navigation}: any) => {
     const {dark} = useTheme()
