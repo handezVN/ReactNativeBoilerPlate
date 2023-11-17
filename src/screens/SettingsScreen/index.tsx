@@ -7,18 +7,18 @@ import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 import {useTheme} from '@react-navigation/native';
 import {globalStore} from '../../store/store';
-import {languageItem, themeItem} from '../../store/settingSlice';
 import {DarkMode, LightMode} from '../../constants/colors';
+import { ThemeItem, useThemes } from '../../handlers/ThemeContext';
+import { LanguageItem, useLanguage } from '../../handlers/LanguageContext';
 
 const SettingsScreen = ({navigation}: any) => {
-  const {themes, languages} = useSelector(
-    (state: globalStore) => state.settings,
-  );
+  const {themes} = useThemes();
+  const {languages} = useLanguage();
   const {dark} = useTheme();
   const Colors = dark ? DarkMode.colors : LightMode.colors;
   const {t} = useTranslation();
-  const selectedTheme: themeItem = themes.find(item => item.selected === true)!;
-  const selectedLanguage: languageItem = languages.find(
+  const selectedTheme: ThemeItem = themes.find(item => item.selected === true)!;
+  const selectedLanguage: LanguageItem = languages.find(
     item => item.selected === true,
   )!;
   return (

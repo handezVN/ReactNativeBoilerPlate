@@ -4,9 +4,8 @@ import ItemWithIcon from "../../components/ItemWithIcon"
 import {useTranslation} from "react-i18next"
 import {setValueInAsyncStorage} from "../../utils/asyncStorage"
 import {useTheme} from "@react-navigation/native"
-import {languageItem} from "../../store/settingSlice"
 import {DarkMode, LightMode} from "../../constants/colors"
-import { useLanguage } from "../../handlers/LanguageContext"
+import { LanguageItem, useLanguage } from "../../handlers/LanguageContext"
 
 const LanguagesScreen = ({navigation}: any) => {
     const {dark} = useTheme()
@@ -14,7 +13,7 @@ const LanguagesScreen = ({navigation}: any) => {
     const {languages , onSetLanguages} = useLanguage();
     const {i18n} = useTranslation()
     type renderItemProps = {
-        item: languageItem
+        item: LanguageItem
         index: number
     }
     const ChangeLangue = async ( {value }:{value: string}) => {

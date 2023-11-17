@@ -19,12 +19,6 @@ import {
 import {DarkMode, LightMode} from './constants/colors';
 import {Provider, useDispatch, useSelector} from 'react-redux';
 import {getValueFromAsyncStorage} from './utils/asyncStorage';
-import {
-  setLanguage,
-  setTheme,
-  SettingType,
-  themeItem,
-} from './store/settingSlice';
 import store, {globalStore} from './store/store';
 import Loader from './components/Loader';
 import HomeBottomNavigation from './navigations/HomeBottomNavigation';
@@ -42,18 +36,18 @@ const DarkModeTheme = {
 };
 import i18n from './i18n/config';
 import { LanguageProvider, useLanguage } from './handlers/LanguageContext';
-import { ThemeProvider, useTheme } from './handlers/ThemeContext';
+import { ThemeProvider, useThemes } from './handlers/ThemeContext';
 const AppRoot = () => {
   const colorScheme = useColorScheme();
 
-  const { setThemes ,themes} = useTheme();
+  const { onSetTheme ,themes} = useThemes();
   const {  languages,onSetLanguages } = useLanguage();
 
   useEffect(() => {
     // get and set user selected theme in store
     async function setSelectedTheme() {
       const selectedTheme = await getValueFromAsyncStorage('selected_theme');
-      setThemes(selectedTheme)
+      onSetTheme(selectedTheme)
     }
     // get and set user selected language in store
     async function setSelectedLanguage() {

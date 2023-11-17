@@ -9,7 +9,7 @@ export type ThemeItem = {
 
 export type SettingType = {
   themes: ThemeItem[];
-  setThemes: React.Dispatch<React.SetStateAction<ThemeItem[]>>;
+  onSetTheme: (code: string) => void;
 };
 
 export const ThemeContext = createContext<SettingType | undefined>(undefined);
@@ -21,15 +21,29 @@ export const ThemeProvider: any = ({ children } : any) => {
   ];
 
   const [themes, setThemes] = useState<ThemeItem[]>(initialState);
-
+  const onSetTheme = (code:string) =>{
+    const newLanguages = themes.map((item) => {
+      if (item.code === code) {
+        return {
+          ...item,
+          selected: true,
+        };
+      }
+      return {
+        ...item,
+        selected: false,
+      };
+    });
+    setThemes(newLanguages)
+  }
   return (
-    <ThemeContext.Provider value={{ themes, setThemes }}>
+    <ThemeContext.Provider value={{ themes, onSetTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
-export const useTheme = () => {
+export const useThemes = () => {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
