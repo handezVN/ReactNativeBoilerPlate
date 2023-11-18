@@ -1,17 +1,31 @@
-import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+  TextStyle,
+  ViewStyle,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const SelectRightIcon = ({
+interface SelectRightIconProps {
+  backgroundColor?: string;
+  textColor?: string;
+  text: string;
+  iconName: string;
+  onPress: () => void;
+}
+
+const SelectRightIcon: React.FC<SelectRightIconProps> = ({
   backgroundColor = 'white',
   textColor = 'black',
   text,
   iconName,
   onPress,
-}: any) => {
+}) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <View
-        style={{...styles.containerStyle, backgroundColor: backgroundColor}}>
+      <View style={{...styles.containerStyle, backgroundColor}}>
         <Text style={{...styles.text14Style, color: textColor}}>{text}</Text>
         <Icon name={iconName} size={24} color={textColor} />
       </View>
@@ -21,7 +35,12 @@ const SelectRightIcon = ({
 
 export default SelectRightIcon;
 
-const styles = StyleSheet.create({
+interface Styles {
+  containerStyle: ViewStyle;
+  text14Style: TextStyle;
+}
+
+const styles = StyleSheet.create<Styles>({
   containerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
