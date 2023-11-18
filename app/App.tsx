@@ -38,6 +38,7 @@ import i18n from './i18n/config';
 import {LanguageProvider, useLanguage} from './handlers/LanguageContext';
 import {ThemeProvider, useThemes} from './handlers/ThemeContext';
 import {AppStateProvider} from './handlers/AppStateContext';
+import {NotificationProvider} from './handlers/NotificationContext';
 const AppRoot = () => {
   const {onSetTheme, themes} = useThemes();
   const {onSetLanguages} = useLanguage();
@@ -51,7 +52,6 @@ const AppRoot = () => {
     // get and set user selected language in store
     async function setSelectedLanguage() {
       const selectedLanguage = await getValueFromAsyncStorage(
-        // eslint-disable-next-line quotes
         'selected_language',
       );
 
@@ -82,9 +82,11 @@ const App = () => {
     <Provider store={store}>
       <LanguageProvider>
         <ThemeProvider>
-          <AppStateProvider>
-            <AppRoot />
-          </AppStateProvider>
+          <NotificationProvider>
+            <AppStateProvider>
+              <AppRoot />
+            </AppStateProvider>
+          </NotificationProvider>
         </ThemeProvider>
       </LanguageProvider>
     </Provider>

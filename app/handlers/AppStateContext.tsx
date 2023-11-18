@@ -39,6 +39,7 @@ export const AppStateProvider: any = ({children}: any) => {
     return () => {
       unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useAppState({
     onChange: newAppState => {

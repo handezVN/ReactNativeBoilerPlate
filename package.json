@@ -6,11 +6,14 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "start-cache": "react-native start --reset-cache"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.19.5",
     "@react-native-community/netinfo": "^11.1.0",
+    "@react-native-firebase/app": "^18.6.1",
+    "@react-native-firebase/messaging": "^18.6.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
