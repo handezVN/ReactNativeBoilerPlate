@@ -4,19 +4,19 @@ import ItemWithIcon from '../../components/ItemWithIcon';
 import {setValueInAsyncStorage} from '../../utils/asyncStorage';
 import {useTheme} from '@react-navigation/native';
 import {DarkMode, LightMode} from '../../constants/colors';
-import { useThemes } from '../../handlers/ThemeContext';
+import {useThemes} from '../../handlers/ThemeContext';
 
-const ThemesScreen = ({navigation}: any) => {
+const ThemesScreen = ({}: any) => {
   const {dark} = useTheme();
   const Colors = dark ? DarkMode.colors : LightMode.colors;
-  const {themes,onSetTheme} = useThemes();
+  const {themes, onSetTheme} = useThemes();
   return (
     <SafeAreaView>
       <View style={globalStyles.containerPadding16Style}>
         <FlatList
           keyExtractor={(item, index) => index.toString()}
           data={themes}
-          renderItem={({item, index}) => (
+          renderItem={({item}) => (
             <ItemWithIcon
               backgroundColor={Colors.card}
               textColor={Colors.text}
@@ -25,7 +25,7 @@ const ThemesScreen = ({navigation}: any) => {
                 item.selected ? 'checkmark-circle' : 'checkmark-circle-outline'
               }
               onPress={() => {
-                onSetTheme(item.code)
+                onSetTheme(item.code);
                 setValueInAsyncStorage('selected_theme', item.code);
               }}
             />

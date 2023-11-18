@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, FC } from 'react';
+import React, {createContext, useState, useContext} from 'react';
 
 export type ThemeItem = {
   id: number;
@@ -14,15 +14,15 @@ export type SettingType = {
 
 export const ThemeContext = createContext<SettingType | undefined>(undefined);
 
-export const ThemeProvider: any = ({ children } : any) => {
+export const ThemeProvider: any = ({children}: any) => {
   const initialState: ThemeItem[] = [
-    { id: 1, name: 'Light Mode', code: 'light', selected: true },
-    { id: 2, name: 'Dark Mode', code: 'dark', selected: false },
+    {id: 1, name: 'Light Mode', code: 'light', selected: true},
+    {id: 2, name: 'Dark Mode', code: 'dark', selected: false},
   ];
 
   const [themes, setThemes] = useState<ThemeItem[]>(initialState);
-  const onSetTheme = (code:string) =>{
-    const newLanguages = themes.map((item) => {
+  const onSetTheme = (code: string) => {
+    const newLanguages = themes.map(item => {
       if (item.code === code) {
         return {
           ...item,
@@ -34,10 +34,10 @@ export const ThemeProvider: any = ({ children } : any) => {
         selected: false,
       };
     });
-    setThemes(newLanguages)
-  }
+    setThemes(newLanguages);
+  };
   return (
-    <ThemeContext.Provider value={{ themes, onSetTheme }}>
+    <ThemeContext.Provider value={{themes, onSetTheme}}>
       {children}
     </ThemeContext.Provider>
   );

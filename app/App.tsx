@@ -8,8 +8,8 @@
  * @format
  */
 
-import React, {useEffect, type PropsWithChildren} from 'react';
-import {StatusBar, StyleSheet, useColorScheme} from 'react-native';
+import React, {useEffect} from 'react';
+import {StatusBar} from 'react-native';
 
 import {
   NavigationContainer,
@@ -17,7 +17,7 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import {DarkMode, LightMode} from './constants/colors';
-import {Provider, useDispatch, useSelector} from 'react-redux';
+import {Provider, useSelector} from 'react-redux';
 import {getValueFromAsyncStorage} from './utils/asyncStorage';
 import store, {globalStore} from './store/store';
 import Loader from './components/Loader';
@@ -35,13 +35,12 @@ const DarkModeTheme = {
   ...DarkMode,
 };
 import i18n from './i18n/config';
-import { LanguageProvider, useLanguage } from './handlers/LanguageContext';
-import { ThemeProvider, useThemes } from './handlers/ThemeContext';
+import {LanguageProvider, useLanguage} from './handlers/LanguageContext';
+import {ThemeProvider, useThemes} from './handlers/ThemeContext';
+import {AppStateProvider} from './handlers/AppStateContext';
 const AppRoot = () => {
-  const colorScheme = useColorScheme();
-
-  const { onSetTheme ,themes} = useThemes();
-  const {  languages,onSetLanguages } = useLanguage();
+  const {onSetTheme, themes} = useThemes();
+  const {onSetLanguages} = useLanguage();
 
   useEffect(() => {
     // get and set user selected theme in store
@@ -52,16 +51,18 @@ const AppRoot = () => {
     // get and set user selected language in store
     async function setSelectedLanguage() {
       const selectedLanguage = await getValueFromAsyncStorage(
+        // eslint-disable-next-line quotes
         'selected_language',
       );
-      
-      i18n.changeLanguage(selectedLanguage );
+
+      i18n.changeLanguage(selectedLanguage);
       onSetLanguages(selectedLanguage ? selectedLanguage : 'en');
     }
     setSelectedTheme();
     setSelectedLanguage();
     SplashScreen.hide();
-  },[]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {isLoading} = useSelector((state: globalStore) => state.global);
 
@@ -69,26 +70,25 @@ const AppRoot = () => {
     <NavigationContainer
       theme={themes[1].selected ? DarkModeTheme : LightModeTheme}>
       <StatusBar
-        barStyle={
-          themes[1].selected ? 'light-content' : 'dark-content'
-        }></StatusBar>
+        barStyle={themes[1].selected ? 'light-content' : 'dark-content'}
+      />
       <Loader visible={isLoading} />
-      <HomeBottomNavigation></HomeBottomNavigation>
+      <HomeBottomNavigation />
     </NavigationContainer>
   );
 };
-const initI18n = i18n;
 const App = () => {
   return (
     <Provider store={store}>
       <LanguageProvider>
         <ThemeProvider>
-          <AppRoot />
+          <AppStateProvider>
+            <AppRoot />
+          </AppStateProvider>
         </ThemeProvider>
       </LanguageProvider>
     </Provider>
   );
 };
-
 
 export default App;

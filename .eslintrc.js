@@ -5,9 +5,9 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        "quotes": ["warning", "double"],
-        "react/react-in-jsx-scope": "off",
-        "react/no-unstable-nested-components": "off",
+        '@typescript-eslint/no-shadow': ['error'],
+        'react-hooks/exhaustive-deps': 'warn',
+        'react/react-in-jsx-scope': 'off',
       },
     },
   ],

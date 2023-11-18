@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from '@react-navigation/native';
 import {DarkMode, LightMode} from '../../constants/colors';
-import { ThemeItem, useThemes } from '../../handlers/ThemeContext';
-import { LanguageItem, useLanguage } from '../../handlers/LanguageContext';
+import {ThemeItem, useThemes} from '../../handlers/ThemeContext';
+import {LanguageItem, useLanguage} from '../../handlers/LanguageContext';
 
 const SettingsScreen = ({navigation}: any) => {
   const {themes} = useThemes();

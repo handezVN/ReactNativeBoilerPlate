@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, FC } from 'react';
+import React, {createContext, useState, useContext} from 'react';
 
 export type LanguageItem = {
   id: number;
@@ -12,17 +12,19 @@ export type SettingType = {
   onSetLanguages: (code: string) => void;
 };
 
-export const LanguageContext = createContext<SettingType | undefined>(undefined);
+export const LanguageContext = createContext<SettingType | undefined>(
+  undefined,
+);
 
-export const LanguageProvider: any = ({ children }: any) => {
+export const LanguageProvider: any = ({children}: any) => {
   const initialState: LanguageItem[] = [
-    { id: 1, name: 'English', code: 'en', selected: true },
-    { id: 2, name: 'VietNam', code: 'vn', selected: false },
+    {id: 1, name: 'English', code: 'en', selected: true},
+    {id: 2, name: 'VietNam', code: 'vn', selected: false},
   ];
 
   const [languages, setLanguages] = useState<LanguageItem[]>(initialState);
-  const onSetLanguages = (code:string) =>{
-    const newLanguages = languages.map((item) => {
+  const onSetLanguages = (code: string) => {
+    const newLanguages = languages.map(item => {
       if (item.code === code) {
         return {
           ...item,
@@ -34,10 +36,10 @@ export const LanguageProvider: any = ({ children }: any) => {
         selected: false,
       };
     });
-    setLanguages(newLanguages)
-  }
+    setLanguages(newLanguages);
+  };
   return (
-    <LanguageContext.Provider value={{ languages, onSetLanguages }}>
+    <LanguageContext.Provider value={{languages, onSetLanguages}}>
       {children}
     </LanguageContext.Provider>
   );
