@@ -1,12 +1,12 @@
 import {View, Text, SafeAreaView} from 'react-native';
 import globalStyles from '../../constants/globalStyles';
-import IconicItemWithText from '../../components/IconicItemWithText';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useTranslation} from 'react-i18next';
 import {useTheme} from '@react-navigation/native';
 import {DarkMode, LightMode} from '../../constants/colors';
 import {ThemeItem, useThemes} from '../../handlers/ThemeContext';
 import {LanguageItem, useLanguage} from '../../handlers/LanguageContext';
+import SelectItem from '@app/components/SelectItem';
 
 const SettingsScreen = ({navigation}: any) => {
   const {themes} = useThemes();
@@ -28,7 +28,7 @@ const SettingsScreen = ({navigation}: any) => {
           </Text>
         </View>
 
-        <IconicItemWithText
+        <SelectItem
           backgroundColor={Colors.card}
           textColor={Colors.text}
           leftIconName="color-palette-outline"
@@ -38,7 +38,7 @@ const SettingsScreen = ({navigation}: any) => {
             navigation.navigate('Themes');
           }}
         />
-        <IconicItemWithText
+        <SelectItem
           backgroundColor={Colors.card}
           textColor={Colors.text}
           leftIconName="language-outline"

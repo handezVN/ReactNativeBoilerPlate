@@ -1,6 +1,6 @@
 import {SafeAreaView, View, FlatList} from 'react-native';
 import globalStyles from '../../constants/globalStyles';
-import ItemWithIcon from '../../components/ItemWithIcon';
+import ItemWithIcon from '../../components/SelectRightIcon';
 import {setValueInAsyncStorage} from '../../utils/asyncStorage';
 import {useTheme} from '@react-navigation/native';
 import {DarkMode, LightMode} from '../../constants/colors';

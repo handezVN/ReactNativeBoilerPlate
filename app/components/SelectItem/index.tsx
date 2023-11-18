@@ -1,25 +1,29 @@
 import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const ItemWithIcon = ({
+const SelectItem = ({
   backgroundColor = 'white',
   textColor = 'black',
-  text,
-  iconName,
+  leftIconName,
+  keyText,
+  valueText,
   onPress,
 }: any) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View
         style={{...styles.containerStyle, backgroundColor: backgroundColor}}>
-        <Text style={{...styles.text14Style, color: textColor}}>{text}</Text>
-        <Icon name={iconName} size={24} color={textColor} />
+        <Icon name={leftIconName} size={24} color={textColor} />
+        <Text style={{...styles.text14Style, color: textColor}}>{keyText}</Text>
+        <Text style={{color: textColor, fontSize: 14, marginHorizontal: 4}}>
+          {valueText}
+        </Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default ItemWithIcon;
+export default SelectItem;
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -35,6 +39,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: 'black',
     fontSize: 14,
+    marginHorizontal: 12,
     marginVertical: 8,
   },
 });

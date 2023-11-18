@@ -5,7 +5,7 @@ import {setValueInAsyncStorage} from '../../utils/asyncStorage';
 import {useTheme} from '@react-navigation/native';
 import {DarkMode, LightMode} from '../../constants/colors';
 import {LanguageItem, useLanguage} from '../../handlers/LanguageContext';
-import ItemWithIcon from '../../components/ItemWithIcon';
+import SelectRightIcon from '@app/components/SelectRightIcon';
 
 const LanguagesScreen = ({}: any) => {
   const {dark} = useTheme();
@@ -25,7 +25,7 @@ const LanguagesScreen = ({}: any) => {
   };
   const renderItem = ({item}: renderItemProps) => {
     return (
-      <ItemWithIcon
+      <SelectRightIcon
         backgroundColor={Colors.card}
         textColor={Colors.text}
         text={item.name}
