@@ -1,9 +1,8 @@
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import React, {useEffect} from 'react';
 import {useTheme} from '@react-navigation/native';
 import {DarkMode, LightMode} from '../../constants/colors';
 import {useAppStateContext} from '@app/handlers/AppStateContext';
-import {RobotoText} from '@app/components/RobotoText/RobotoText';
 
 const UsersScreen = () => {
   const {dark} = useTheme();
@@ -15,7 +14,7 @@ const UsersScreen = () => {
   }, []);
   return (
     <SafeAreaView>
-      <RobotoText style={{color: Colors.text}}>UsersScreen</RobotoText>
+      <Text style={{color: Colors.text}}>UsersScreen</Text>
     </SafeAreaView>
   );
 };

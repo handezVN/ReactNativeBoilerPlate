@@ -6,5 +6,10 @@ import {Text, TextProps} from 'react-native';
 export function RobotoText(props: TextProps) {
   const {dark} = useTheme();
   const Colors = dark ? DarkMode.colors : LightMode.colors;
-  return <Text {...props} style={[{color: Colors.text}, props.style]} />;
+  return (
+    <Text
+      {...props}
+      style={[{fontFamily: 'Roboto', color: Colors.text}, props.style]}
+    />
+  );
 }
