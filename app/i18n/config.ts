@@ -4,8 +4,8 @@ import {initReactI18next} from 'react-i18next';
 import RNRestart from 'react-native-restart';
 import {getLocales} from 'react-native-localize';
 import {getValueFromAsyncStorage} from '../utils/asyncStorage';
-import { enJson } from './en';
-import { vnJson } from './vn';
+import {enJson} from './en';
+import {vnJson} from './vn';
 
 const languageDetector: any = {
   init: Function.prototype,
